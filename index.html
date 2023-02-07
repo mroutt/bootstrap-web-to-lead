@@ -7,7 +7,7 @@
     <title>Sleep Referral Request</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body onload="init()">
+<body>
     <div class="container col-lg-8">
         <h1 class="text-center my-3">Sleep Referral Request</h1>
 
@@ -24,26 +24,30 @@
                 <div class="row row-cols-md-2 row-cols-1">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="company" maxlength="40" placeholder="Referring Doctor's Name">
-                            <label for="company">Referring Doctor's Name</label>
+                            <input type="text" class="form-control" id="company" maxlength="40" placeholder="Referring Doctor's Name" required>
+                            <label for="company">Referring Doctor's Name*</label>
+                            <div class="invalid-feedback">Please enter the referring Doctor's name</div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="Provider_Number__c" maxlength="16" placeholder="Provider Number">
-                            <label for="Provider_Number__c">Provider Number</label>
+                            <input type="text" class="form-control" id="Provider_Number__c" maxlength="16" placeholder="Provider Number" required>
+                            <label for="Provider_Number__c">Provider Number*</label>
+                            <div class="invalid-feedback">Please enter a Provider Number</div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" maxlength="80" placeholder="Email Address">
-                            <label for="email">Email Address</label>
+                            <input type="email" class="form-control" id="email" maxlength="80" placeholder="Email Address" required>
+                            <label for="email">Email Address*</label>
+                            <div class="invalid-feedback">Please enter an Email address</div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="phone" maxlength="40" placeholder="Phone">
-                            <label for="email">Phone</label>
+                            <input type="text" class="form-control" id="phone" maxlength="40" placeholder="Phone" required>
+                            <label for="email">Phone*</label>
+                            <div class="invalid-feedback">Please enter a phone number</div>
                         </div>
                     </div>
                     <div class="col">
@@ -91,26 +95,30 @@
                 <div class="row row-cols-md-2 row-cols-1">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="first_name" maxlength="40" placeholder="First Name">
-                            <label for="first_name">First Name</label>
+                            <input type="text" class="form-control" id="first_name" maxlength="40" placeholder="First Name" required>
+                            <label for="first_name">First Name*</label>
+                            <div class="invalid-feedback">Please enter the patient's first name</div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="last_name" maxlength="40" placeholder="Last Name">
-                            <label for="last_name">Last Name</label>
+                            <input type="text" class="form-control" id="last_name" maxlength="40" placeholder="Last Name" required>
+                            <label for="last_name">Last Name*</label>
+                            <div class="invalid-feedback">Please enter the patient's last name</div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control" id="Patient_Date_of_Birth__c" placeholder="Date of Birth">
-                            <label for="Patient_Date_of_Birth__c">Date of Birth</label>
+                            <input type="date" class="form-control" id="Patient_Date_of_Birth__c" placeholder="Date of Birth" required>
+                            <label for="Patient_Date_of_Birth__c">Date of Birth*</label>
+                            <div class="invalid-feedback">Please enter the patient's date of birth</div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="Patient_Phone__c" maxlength="40" placeholder="Phone">
-                            <label for="Patient_Phone__c">Phone</label>
+                            <input type="text" class="form-control" id="Patient_Phone__c" maxlength="40" placeholder="Phone" required>
+                            <label for="Patient_Phone__c">Phone*</label>
+                            <div class="invalid-feedback">Please enter the patient's phone number</div>
                         </div>
                     </div>
                     <div class="col">
@@ -122,7 +130,7 @@
                     <div class="col">
                         <div class="form-floating mb-3">
                             <select class="form-select" id="Patient_Gender__c">
-                                <option selected>Please Select..</option>
+                                <option selected disabled value="">Please Select..</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
@@ -131,8 +139,9 @@
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="Patient_Medicare_Number__c" maxlength="16" placeholder="Medicare Number">
-                            <label for="Patient_Medicare_Number__c">Medicare Number</label>
+                            <input type="text" class="form-control" id="Patient_Medicare_Number__c" maxlength="16" placeholder="Medicare Number" required>
+                            <label for="Patient_Medicare_Number__c">Medicare Number*</label>
+                            <div class="invalid-feedback">Please enter the patient's Medicare Number</div>
                         </div>
                     </div>
                     <div class="col">
@@ -156,7 +165,7 @@
                     <div class="col">
                         <div class="form-floating mb-3">
                             <select class="form-select" id="Referral_Service__c">
-                                <option selected>Please Select..</option>
+                                <option selected disabled value="">Please Select..</option>
                                 <option value="Medicare-funded sleep study">Medicare-funded sleep study</option>
                                 <option value="Physician Consult (NSW only)">Physician Consult (NSW only)</option>
                                 <option value="Patient-funded sleep study">Patient-funded sleep study</option>

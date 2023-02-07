@@ -1,29 +1,45 @@
 let currentPageIndex;
-let navElements;
+let pages;
 let leftButton;
 let rightButton;
 let submitButton;
 
-function init() {
+document.addEventListener("DOMContentLoaded", function(event) {
 
     currentPageIndex = 0;
-    navElements = Array.from(document.getElementsByClassName('nav-page'));
+    pages = Array.from(document.getElementsByClassName('nav-page'));
+
+    addValidationEventsToAllInputElements();
 
     leftButton = document.getElementById("left-button");
     rightButton = document.getElementById("right-button");
     submitButton = document.getElementById("submit-button");
 
-    showProperDiv();
+    showCurrentPage();
+});
+
+function addValidationEventsToAllInputElements() {
+    
+    let inputElements = document.getElementsByTagName("input", "select");
+
+    for (let element of inputElements) {
+
+        if(element.type != "hidden") {
+            element.addEventListener("input", validateElement);    
+        }
+    }
 }
 
-function showProperDiv() {
+function showCurrentPage() {
     
-    for(let i = 0; i < navElements.length; i++) {
+    for(let i = 0; i < pages.length; i++) {
+
+        let page = pages[i];
 
         if(i == currentPageIndex) {
-            navElements[i].style.display = "";
+            page.style.display = "";
         } else {
-            navElements[i].style.display = "none";
+            page.style.display = "none";
         }        
     }
 
@@ -31,7 +47,7 @@ function showProperDiv() {
         leftButton.disabled = true;
         rightButton.disabled = false;
         submitButton.style.display = "none";
-    } else if (currentPageIndex == (navElements.length - 1)) {
+    } else if (currentPageIndex == (pages.length - 1)) {
         leftButton.disabled = false;
         rightButton.disabled = true;
         submitButton.style.display = "";  
@@ -43,11 +59,47 @@ function showProperDiv() {
 }
 
 function nextPage() {
-    currentPageIndex++;
-    showProperDiv();
+
+    if(validateCurrentPage()) {
+        currentPageIndex++;
+        showCurrentPage();    
+    }
 }
 
 function prevPage() {
+
     currentPageIndex--;
-    showProperDiv();
+    showCurrentPage();
+}
+
+function validateCurrentPage() {
+
+    let valid = true;
+    let currentPage = pages[currentPageIndex];
+    let inputElements = currentPage.getElementsByTagName("input", "select");
+
+    for (let element of inputElements) {
+    
+        if (!element.checkValidity()) {
+
+            // This will mark the UI element as invalid
+            element.className += " is-invalid";
+            valid = false;
+        }
+    }
+    
+    return valid;
+  }
+
+function validateElement(event) {
+
+    let element = event.target;
+
+    if (!element.checkValidity()) {
+        // This will mark the UI element as invalid
+        element.className += " is-invalid";
+    } else {
+        // This will remove the invalid mark on the UI element
+        element.classList.remove("is-invalid");
+    }
 }
