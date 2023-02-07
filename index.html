@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Referral Request</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="init()">
+    <div class="container col-lg-8">
+        <h1 class="text-center my-3">Sleep Referral Request</h1>
+
+        <form class="bg-light p-4" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+            
+            <input type=hidden name="oid" value="00DDn00000C0Iug">
+            <input type=hidden name="recordType" id="recordType" value="Sleep_Referral_Lead">
+
+            <div class="nav-page">
+
+                <div class="row pb-3">
+                    <h2>Provider Information</h2>
+                </div>
+                <div class="row row-cols-md-2 row-cols-1">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="company" maxlength="40" placeholder="Referring Doctor's Name">
+                            <label for="company">Referring Doctor's Name</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="Provider_Number__c" maxlength="16" placeholder="Provider Number">
+                            <label for="Provider_Number__c">Provider Number</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email" maxlength="80" placeholder="Email Address">
+                            <label for="email">Email Address</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="phone" maxlength="40" placeholder="Phone">
+                            <label for="email">Phone</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="fax" maxlength="40" placeholder="Fax">
+                            <label for="fax">Fax</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    <h4>Mailing Address</h4>
+                </div>
+                <div class="row row-cols-md-2 row-cols-1">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="street" maxlength="80" placeholder="Street">
+                            <label for="street">Street</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="city" maxlength="40" placeholder="City">
+                            <label for="city">City</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="state" maxlength="20" placeholder="State">
+                            <label for="state">State</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="zip" maxlength="20" placeholder="Postcode">
+                            <label for="zip">Postcode</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-page">
+                <div class="row pb-3">
+                    <h2>Patient Details</h2>
+                </div>
+                <div class="row row-cols-md-2 row-cols-1">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="first_name" maxlength="40" placeholder="First Name">
+                            <label for="first_name">First Name</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="last_name" maxlength="40" placeholder="Last Name">
+                            <label for="last_name">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="date" class="form-control" id="Patient_Date_of_Birth__c" placeholder="Date of Birth">
+                            <label for="Patient_Date_of_Birth__c">Date of Birth</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="Patient_Phone__c" maxlength="40" placeholder="Phone">
+                            <label for="Patient_Phone__c">Phone</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="Patient_Language__c" maxlength="32" placeholder="Language Spoken">
+                            <label for="Patient_Language__c">Language Spoken</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="Patient_Gender__c">
+                                <option selected>Please Select..</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                            <label for="Patient_Gender__c">Gender</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="Patient_Medicare_Number__c" maxlength="16" placeholder="Medicare Number">
+                            <label for="Patient_Medicare_Number__c">Medicare Number</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="date" class="form-control" id="Patient_Medicare_Expiration_Date__c" placeholder="Medicare Expiration Date">
+                            <label for="Patient_Medicare_Expiration_Date__c">Medicare Expiration Date</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="Medicare_Reference_Number__c" maxlength="16" placeholder="Medicare Reference Number">
+                            <label for="Medicare_Reference_Number__c">Medicare Reference Number</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="Referral_Reason__c" maxlength="128" placeholder="Referral Reason">
+                            <label for="Referral_Reason__c">Referral Reason</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <select class="form-select" id="Referral_Service__c">
+                                <option selected>Please Select..</option>
+                                <option value="Medicare-funded sleep study">Medicare-funded sleep study</option>
+                                <option value="Physician Consult (NSW only)">Physician Consult (NSW only)</option>
+                                <option value="Patient-funded sleep study">Patient-funded sleep study</option>
+                                <option value="CPAP treatment">CPAP treatment</option>
+                            </select>
+                            <label for="Referral_Service__c">Service</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-page">
+                <div class="row pb-3">
+                    <h2>Epworth Sleepiness Questionnaire</h2>
+                </div>
+                
+                <div class="row lead">Patient's chance of dozing or sleeping while:</div>
+                
+                <div class="row p-3">
+                    Sitting and reading
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="ep-sit-read-1" value="0" name="ep-sit-read">
+                    <label for="ep-sit-read-1" class="form-check-label">Never</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="ep-sit-read-2" value="1" name="ep-sit-read">
+                    <label for="ep-sit-read-2" class="form-check-label">Slight</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="ep-sit-read-3" value="2" name="ep-sit-read">
+                    <label for="ep-sit-read-3" class="form-check-label">Moderate</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="ep-sit-read-4" value="3" name="ep-sit-read">
+                    <label for="ep-sit-read-4" class="form-check-label">High</label>
+                </div>
+
+                <div class="row p-3">
+                    Sitting, inactive in a public place (eg. a theatre or a meeting).
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="ep-sit-public-1" value="0" name="ep-sit-public">
+                    <label for="ep-sit-public-1" class="form-check-label">Never</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="ep-sit-public-2" value="1" name="ep-sit-public">
+                    <label for="ep-sit-public-2" class="form-check-label">Slight</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="ep-sit-public-3" value="2" name="ep-sit-public">
+                    <label for="ep-sit-public-3" class="form-check-label">Moderate</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input" id="ep-sit-public-4" value="3" name="ep-sit-public">
+                    <label for="ep-sit-public-4" class="form-check-label">High</label>
+                </div>
+            </div>
+
+            <!-- <div class="nav-page">
+                <div class="row pb-3">
+                    <h2>Header Text</h2>
+                </div>
+                <div class="row row-cols-md-2 row-cols-1">
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="zip" maxlength="20" placeholder="Postcode">
+                            <label for="zip">Postcode</label>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="row mx-5 py-3">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-secondary" id="left-button" onclick="prevPage()">&lt Previous</button>
+                    <button type="button" class="btn btn-primary" id="right-button" onclick="nextPage()">Next &gt</button>                       
+                </div>    
+            </div>
+
+            <div class="row mx-5 py-3">
+                <button class="btn btn-success" id="submit-button">Submit Request</button> 
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
