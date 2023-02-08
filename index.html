@@ -11,10 +11,13 @@
     <div class="container col-lg-8">
         <h1 class="text-center my-3">Sleep Referral Request</h1>
 
-        <form class="bg-light p-4" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+        <form class="bg-light p-4" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" onsubmit="beforeSubmit()">
             
             <input type=hidden name="oid" value="00DDn00000C0Iug">
-            <input type=hidden name="recordType" id="recordType" value="Sleep_Referral_Lead">
+            <input type=hidden name="recordType" id="recordType" value="Sleep_Referral_Lead">            
+            <input type=hidden id="email" maxlength="80" name="email">
+            <input type=hidden id="Patient_Date_of_Birth__c" name="Patient_Date_of_Birth__c">
+            <input type=hidden id="Patient_Medicare_Exp_Date__c" name="Patient_Medicare_Exp_Date__c">
 
             <div class="nav-page">
 
@@ -24,35 +27,35 @@
                 <div class="row row-cols-md-2 row-cols-1">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="company" maxlength="40" placeholder="Referring Doctor's Name" required>
+                            <input type="text" class="form-control" id="company" name="company" maxlength="40" placeholder="Referring Doctor's Name" required>
                             <label for="company">Referring Doctor's Name*</label>
                             <div class="invalid-feedback">Please enter the referring Doctor's name</div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="Provider_Number__c" maxlength="16" placeholder="Provider Number" required>
+                            <input type="text" class="form-control" id="Provider_Number__c" name="Provider_Number__c" maxlength="16" placeholder="Provider Number" required>
                             <label for="Provider_Number__c">Provider Number*</label>
                             <div class="invalid-feedback">Please enter a Provider Number</div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" maxlength="80" placeholder="Email Address" required>
-                            <label for="email">Email Address*</label>
+                            <input type="email" class="form-control" id="provider_email" maxlength="80" placeholder="Email Address" required>
+                            <label for="provider_email">Email Address*</label>
                             <div class="invalid-feedback">Please enter an Email address</div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="phone" maxlength="40" placeholder="Phone" required>
-                            <label for="email">Phone*</label>
+                            <input type="text" class="form-control" id="phone" name="phone" maxlength="40" placeholder="Phone" required>
+                            <label for="phone">Phone*</label>
                             <div class="invalid-feedback">Please enter a phone number</div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="fax" maxlength="40" placeholder="Fax">
+                            <input type="text" class="form-control" id="fax" name="fax" maxlength="40" placeholder="Fax">
                             <label for="fax">Fax</label>
                         </div>
                     </div>
@@ -63,29 +66,29 @@
                 <div class="row row-cols-md-2 row-cols-1">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="street" maxlength="80" placeholder="Street">
+                            <input type="text" class="form-control" id="street" name="street" maxlength="80" placeholder="Street">
                             <label for="street">Street</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="city" maxlength="40" placeholder="City">
+                            <input type="text" class="form-control" id="city" name="city" maxlength="40" placeholder="City">
                             <label for="city">City</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="state" maxlength="20" placeholder="State">
+                            <input type="text" class="form-control" id="state" name="state" maxlength="20" placeholder="State">
                             <label for="state">State</label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="zip" maxlength="20" placeholder="Postcode">
+                            <input type="text" class="form-control" id="zip" name="zip" maxlength="20" placeholder="Postcode">
                             <label for="zip">Postcode</label>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
 
             <div class="nav-page">
@@ -95,22 +98,22 @@
                 <div class="row row-cols-md-2 row-cols-1">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="first_name" maxlength="40" placeholder="First Name" required>
+                            <input type="text" class="form-control" id="first_name" name="first_name" maxlength="40" placeholder="First Name" required>
                             <label for="first_name">First Name*</label>
                             <div class="invalid-feedback">Please enter the patient's first name</div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="last_name" maxlength="40" placeholder="Last Name" required>
+                            <input type="text" class="form-control" id="last_name" name="last_name" maxlength="40" placeholder="Last Name" required>
                             <label for="last_name">Last Name*</label>
                             <div class="invalid-feedback">Please enter the patient's last name</div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control" id="Patient_Date_of_Birth__c" placeholder="Date of Birth" required>
-                            <label for="Patient_Date_of_Birth__c">Date of Birth*</label>
+                            <input type="date" class="form-control" id="date_of_birth" placeholder="Date of Birth" required>
+                            <label for="date_of_birth">Date of Birth*</label>
                             <div class="invalid-feedback">Please enter the patient's date of birth</div>
                         </div>
                     </div>
@@ -139,15 +142,15 @@
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="Patient_Medicare_Number__c" maxlength="16" placeholder="Medicare Number" required>
+                            <input type="text" class="form-control" id="Patient_Medicare_Number__c" name="Patient_Medicare_Number__c" maxlength="16" placeholder="Medicare Number" required>
                             <label for="Patient_Medicare_Number__c">Medicare Number*</label>
                             <div class="invalid-feedback">Please enter the patient's Medicare Number</div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="date" class="form-control" id="Patient_Medicare_Expiration_Date__c" placeholder="Medicare Expiration Date">
-                            <label for="Patient_Medicare_Expiration_Date__c">Medicare Expiration Date</label>
+                            <input type="date" class="form-control" id="medicare_exp_date" placeholder="Medicare Expiration Date">
+                            <label for="medicare_exp_date">Medicare Expiration Date</label>
                         </div>
                     </div>
                     <div class="col">
@@ -177,7 +180,7 @@
                 </div>
             </div>
 
-            <div class="nav-page">
+            <!-- <div class="nav-page">
                 <div class="row pb-3">
                     <h2>Epworth Sleepiness Scale</h2>
                 </div>
@@ -414,7 +417,7 @@
                     </div>
                 </div>
                 
-            </div>
+            </div> -->
 
             <!-- <div class="nav-page">
                 <div class="row pb-3">

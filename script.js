@@ -25,6 +25,7 @@ function addValidationEventsToAllInputElements() {
     for (let element of inputElements) {
 
         if(element.type != "hidden") {
+
             element.addEventListener("input", validateElement);    
         }
     }
@@ -61,6 +62,7 @@ function showCurrentPage() {
 function nextPage() {
 
     if(validateCurrentPage()) {
+
         currentPageIndex++;
         showCurrentPage();    
     }
@@ -80,7 +82,7 @@ function validateCurrentPage() {
 
     for (let element of inputElements) {
     
-        if (!element.checkValidity()) {
+        if (element.type != "hidden" && !element.checkValidity()) {
 
             // This will mark the UI element as invalid
             element.className += " is-invalid";
@@ -102,4 +104,25 @@ function validateElement(event) {
         // This will remove the invalid mark on the UI element
         element.classList.remove("is-invalid");
     }
+}
+
+function beforeSubmit() {
+    
+    fillHiddenField('provider_email', 'email');
+    fillHiddenDateField('date_of_birth', 'Patient_Date_of_Birth__c');
+    fillHiddenDateField('medicare_exp_date', 'Patient_Medicare_Exp_Date__c');
+}
+
+function fillHiddenField(visibleElementId, hiddenElementId) {
+
+    let visibleElement = document.getElementById(visibleElementId);
+    let hiddenElement = document.getElementById(hiddenElementId);
+    hiddenElement.value = visibleElement.value;
+}
+
+function fillHiddenDateField(visibleElementId, hiddenElementId) {
+
+    let visibleElement = document.getElementById(visibleElementId);    
+    let hiddenElement = document.getElementById(hiddenElementId);
+    let dateString = new Date(visibleElement.value).toLocaleDateString("en-US");    
 }
