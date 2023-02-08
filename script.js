@@ -124,5 +124,6 @@ function fillHiddenDateField(visibleElementId, hiddenElementId) {
 
     let visibleElement = document.getElementById(visibleElementId);    
     let hiddenElement = document.getElementById(hiddenElementId);
-    let dateString = new Date(visibleElement.value).toLocaleDateString("en-US");    
+    let dateString = new Date(visibleElement.value).toLocaleDateString("en-US");
+    hiddenElement.value = dateString;     
 }
